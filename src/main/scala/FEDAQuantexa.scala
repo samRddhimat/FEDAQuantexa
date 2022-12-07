@@ -14,7 +14,6 @@ object FEDAQuantexa {
 
     /********FlightData <-- 1)Find the total number of flights for each month. ************/
 
-
     val dfFDRaw = spark.read.option("header",true).csv("src/resources/flightData.csv")
     //    dfFDRaw.printSchema()
     //    spark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")
@@ -38,8 +37,29 @@ object FEDAQuantexa {
     //    println("Hello World!")
     //    dfFDTyped.select(count("TravelMontH").as("NumberofFlights"), "TRavelMonth")
 //    dfFDTyped.groupBy("TravelMonth","FID").count().as("Month").orderBy("TravelMonth").show(100)
-        dfFDTyped.groupBy("TravelMonth").count().as("Month").orderBy("TravelMonth").show()
 
-    /**/
+    println("1) Find the total number of flights for each month - OUPUT STARTS")
+        dfFDTyped.groupBy("TravelMonth").count().as("Month").orderBy("TravelMonth").show()
+    println("1) Find the total number of flights for each month - OUPUT ENDS")
+
+     /*End of Computation for question 1)*/
+
+    /** 2)Find the names of the 100 most frequent flyers. */
+    val dfPsngrRaw = spark.read.option("header",true).csv("src/resources/passengers.csv")
+    dfPsngrRaw.printSchema()
+
+    val dfPsngrTyped = dfPsngrRaw.select(
+      col("passengerId").alias("PID"),
+      col( "firstName").alias("First Name"),
+      col("lastName").alias("Last Name")
+    )
+    println("Schema of dfPsngrTyped")
+    dfPsngrTyped.printSchema()
+//    dfPsngrTyped.show(500)
+
+//    dfFDTyped.as("dfFDTyped").join(dfPsngrTyped.as("dfPsngrTyped"), $"dfFDTyped.PID" === $"dfPsngrTyped.PID", "left_semi")
+    dfFDTyped.join(dfPsngrTyped,dfFDTyped("PID") === dfPsngrTyped("PID"))
+        .select(dfFDTyped.columns.map(c => dfFDTyped(c)):_*).printSchema()
+
   }
 }
