@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b7c3c8e-b018-4365-b88d-1029985ffbc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/flightData.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/passengers.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/FEDAQuantexa.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/FEDAQuantexa.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

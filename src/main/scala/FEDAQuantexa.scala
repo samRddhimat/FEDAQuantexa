@@ -12,7 +12,7 @@ object FEDAQuantexa {
     System.setProperty("hadoop.home.dir","C:\\Users\\Srinivasan\\hadoop-common-2.2.0-bin-master\\bin") //<local path of winutils>")
     val spark = SparkSession.builder().master("local[*]").getOrCreate()
 
-    /********FlightData************/
+    /********FlightData <-- 1)Find the total number of flights for each month. ************/
 
 
     val dfFDRaw = spark.read.option("header",true).csv("src/resources/flightData.csv")
