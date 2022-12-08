@@ -14,4 +14,5 @@ scalaVersion := "2.11.11"
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.2.2"
 
 // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.2.1"
+//libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.2.1"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
