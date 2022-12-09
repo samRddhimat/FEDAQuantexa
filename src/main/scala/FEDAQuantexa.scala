@@ -65,7 +65,7 @@ object FEDAQuantexa {
 //    println("Showing below Passenger Data (dfPsngrTyped) with proper types")
 //    dfPsngrTyped.show(100)
 //    println("Done showing Passenger Data (dfPsngrTyped)")
-
+  print("2)Find the names of the 100 most frequent flyers. - OUTPUT STARTS")
     val dfTop100Traveller = dfFDTyped.groupBy("PID").agg(count("*")
       .alias("Number of Flights"))
       .sort(col("Number of Flights").desc)
@@ -79,6 +79,7 @@ object FEDAQuantexa {
       .select(dfTop100Traveller("PID").as("Passenger ID"), dfTop100Traveller("Number of Flights"), dfPsngrTyped("First Name"), dfPsngrTyped("Last Name"))
       .show(false)
     //    println("dfFDTyped merged value test")
+println("2)Find the names of the 100 most frequent flyers - OUTPUT ENDS.")
 
     /**** 2)Find the names of the 100 most frequent flyers - ENDS. ****/
 
@@ -90,11 +91,12 @@ object FEDAQuantexa {
 //      .withColumn ("Longest Run",concat_ws(",",
 //     flatten(col("Longest Run"))))
 //      .show(false)
+    /** question 3 not completed **/
 
-    /***** 4) Find the passengers who have been on more than 3 flights together. ***/
-  println("dfFDTyped.printSchema()")
-    dfFDTyped.printSchema()
-    println("dfFDTyped show")
+    /***** 4) Find the passengers who have been on more than 3 flights together. - OUTPUT STARTS***/
+//  println("dfFDTyped.printSchema()")
+//    dfFDTyped.printSchema()
+//    println("dfFDTyped show")
     dfFDTyped.alias("df1").join(dfFDTyped.alias("df2"),
       col("df1.PID") < col("df2.PID") &&
         col("df1.FID") === col("df2.FID") &&
