@@ -41,7 +41,10 @@ object FEDAQuantexa {
 
     println("1) Find the total number of flights for each month - OUTPUT STARTS\n")
 //    dfFDTyped.groupBy("TravelMonth").agg(count("*").alias("Number of Flights")).show()
-    dfFDTyped.groupBy("Month").agg(count("*").alias("Number of Flights")).show()
+    dfFDTyped.groupBy("Month")
+      .agg(count("*").alias("Number of Flights"))
+      .sort((col("Month").asc))
+      .show()
     println("1) Find the total number of flights for each month - OUTPUT ENDS\n")
 
     /*End of Computation for question 1)*/
@@ -105,6 +108,7 @@ println("2)Find the names of the 100 most frequent flyers - OUTPUT ENDS.")
       col("df2.PID").alias("Passenger 2 ID"))
       .agg(count("*").as("Number of flights together")).
       where(col("Number of flights together") >= 3)
+      .sort(col("Number of flights together").desc)
       .show()
 
 
