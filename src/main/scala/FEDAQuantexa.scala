@@ -83,18 +83,13 @@ object FEDAQuantexa {
     /**** 2)Find the names of the 100 most frequent flyers - ENDS. ****/
 
     /**** 3)greatest number of countries a passenger has been in without being in the UK - STARTS. ****/
-    val dfGreatest = dfFDTyped.groupBy("PID")
-      .agg(  collect_set(array("Origin","Destination"))
-      .alias("Itinerary"))
-      .withColumn ("Itinerary",concat_ws(",",
-     flatten(col("Itinerary"))))
-
-
-
-    println("greatest")
-    dfGreatest.withColumn("LongestRun",
-    array_distinct(split(col("Itinerary"),",")))
-      .show(false)
+//    println("Showing LongestRun")
+//    val dfGreatest = dfFDTyped.groupBy("PID")
+//      .agg(  collect_set(array("Origin","Destination"))
+//      .alias("Longest Run"))
+//      .withColumn ("Longest Run",concat_ws(",",
+//     flatten(col("Longest Run"))))
+//      .show(false)
 
     /***** 4) Find the passengers who have been on more than 3 flights together. ***/
   println("dfFDTyped.printSchema()")
